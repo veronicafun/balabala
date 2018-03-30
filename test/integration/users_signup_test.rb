@@ -11,7 +11,6 @@ test "valid signup information" do
                             {name:"Example User",email:"user@invalid",password:"pass",
                             password_confirmation:"pass"}}
 end
-follow_redirect!
 assert_template 'users/show'
 end
 end
