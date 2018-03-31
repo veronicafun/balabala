@@ -14,6 +14,7 @@ class UsersController < ApplicationController
      # 创建用户，param获取user
     if @user.save
       # 注册成功
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       # 注册成功的闪现消息
       redirect_to @user

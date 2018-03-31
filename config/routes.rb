@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   root 'static_pages#home' 
   # 把 'static_pages/home' 路由删掉了，因此我们以后都得使用 root_path 或 root_url。
   get '/help', to:'static_pages#help'
@@ -7,6 +9,10 @@ Rails.application.routes.draw do
   get '/contact', to:'static_pages#contact'
   get '/signup', to:'users#new'
   get '/signup', to:'users#create'
+  get '/login', to:'sessions#new'
+  post '/login', to:'sessions#create'
+  delete '/logout', to:'sessions#destroy'
+  
   resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
