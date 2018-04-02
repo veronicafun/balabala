@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
       # 这一句是一个逻辑语句
       # user和后面都返回true，整句才返回true
       log_in user
+      params[:session][:remember_me] == '1'? remember(user):forget(user)
+      # if params[..]...  remember(user) else forget..
+      # 等于1就是选了复选框，没有就=0
       redirect_to user
     else
       # 创建一个错误信息
