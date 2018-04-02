@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1'? remember(user):forget(user)
       # if params[..]...  remember(user) else forget..
       # 等于1就是选了复选框，没有就=0
-      redirect_to user
+      redirect_back_or user
     else
       # 创建一个错误信息
       flash.now[:danger] = 'Invalid email/password combination'

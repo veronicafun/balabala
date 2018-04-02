@@ -19,7 +19,4 @@
 
 
 =======
-//= require bootstrap-sprockets
-//= require bootstrap
-//= require jquery
 >>>>>>> advanced-login

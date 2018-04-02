@@ -11,3 +11,9 @@ michael:
   name: Michael Example
   email: 123@qq.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+
+veronica:
+  name: Veronica fung
+  email: ver@hotmail.com
+  password_digest: <%= User.digest('password') %>
