@@ -15,5 +15,11 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+<<<<<<< HEAD
 
 
+=======
+//= require bootstrap-sprockets
+//= require bootstrap
+//= require jquery
+>>>>>>> advanced-login
