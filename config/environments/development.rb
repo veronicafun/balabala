@@ -30,12 +30,9 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test 
   host = 'localhost:3000' 
-<<<<<<< HEAD
-=======
   # 不要原封不动使用这个域名，
   # 应该使用你本地的开发主机地址 
->>>>>>> account-activation
-  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' , protocol: 'http' }
 
   config.action_mailer.perform_caching = false
 
