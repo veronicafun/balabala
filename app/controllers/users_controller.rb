@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :correct_user, only:[:edit, :update]
   before_action :admin_user,   only: :destroy
 
+  def index
+    @users = User.paginate(page:params[:page])
+  end
+
   def show
     @user = User.find(params[:id])
     # param去获取用户ID，params[:id]返回ID,即1
@@ -12,10 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index
-    @users = User.paginate(page:params[:page])
-  end
-
+ 
   def create
     @user = User.new(user_params)
      # 创建用户，param获取user
@@ -40,6 +41,8 @@ end
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       # 处理更新成功的情况
+      flash[:success] = "Profile updated"
+      redirect_to @user
       else
         render 'edit'
       end
