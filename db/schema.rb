@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180403025630) do
+=======
+ActiveRecord::Schema.define(version: 20180402104035) do
+>>>>>>> account-activation
 
   create_table "users", force: :cascade do |t|
     t.string "name"

@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :admin_user,   only: :destroy
 
   def index
+<<<<<<< HEAD
     @users = User.where(activated: FILL_IN).paginate(page: params[:page])
+=======
+    @users = User.paginate(page:params[:page])
+>>>>>>> account-activation
   end
 
   def show
@@ -17,6 +21,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> account-activation
   def create
     @user = User.new(user_params)
      # 创建用户，param获取user
@@ -40,6 +48,8 @@ end
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       # 处理更新成功的情况
+      flash[:success] = "Profile updated"
+      redirect_to @user
       else
         render 'edit'
       end
