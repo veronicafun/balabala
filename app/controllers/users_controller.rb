@@ -3,17 +3,18 @@ class UsersController < ApplicationController
   before_action :correct_user, only:[:edit, :update]
   before_action :admin_user,   only: :destroy
 
+  def index
+    @users = User.where(activated: FILL_IN).paginate(page: params[:page])
+  end
+
   def show
     @user = User.find(params[:id])
     # param去获取用户ID，params[:id]返回ID,即1
+    redirect_to root_url and return unless FILL_IN
   end
 
   def new
     @user = User.new
-  end
-
-  def index
-    @users = User.paginate(page:params[:page])
   end
 
   def create
@@ -21,10 +22,9 @@ class UsersController < ApplicationController
      # 创建用户，param获取user
     if @user.save
       # 注册成功
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      # 注册成功的闪现消息
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
       # 注册失败那就是已经存在用户，去到new那里登录

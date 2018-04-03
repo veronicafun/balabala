@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       # 登入用户，然后重定向到用户的资料页面,如果验证失败，authenticate返回false
       # 这一句是一个逻辑语句
       # user和后面都返回true，整句才返回true
+      if user.activated?
       log_in user
       params[:session][:remember_me] == '1'? remember(user):forget(user)
       # if params[..]...  remember(user) else forget..
@@ -15,8 +16,14 @@ class SessionsController < ApplicationController
       redirect_back_or user
     else
       # 创建一个错误信息
-      flash.now[:danger] = 'Invalid email/password combination'
+      message  = "Account not activated. "
+      message += "Check your email for the activation link."
+      flash[:warning] = message
       # 错误信息闪现渲染,flash.now用于在重新渲染的页面中显示闪现消息
+      redirect_to root_url
+    end
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
