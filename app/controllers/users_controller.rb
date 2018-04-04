@@ -4,27 +4,19 @@ class UsersController < ApplicationController
   before_action :admin_user,   only: :destroy
 
   def index
-<<<<<<< HEAD
     @users = User.where(activated: FILL_IN).paginate(page: params[:page])
-=======
-    @users = User.paginate(page:params[:page])
->>>>>>> account-activation
   end
 
   def show
     @user = User.find(params[:id])
     # param去获取用户ID，params[:id]返回ID,即1
-    redirect_to root_url and return unless FILL_IN
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
     @user = User.new
   end
 
-<<<<<<< HEAD
-=======
- 
->>>>>>> account-activation
   def create
     @user = User.new(user_params)
      # 创建用户，param获取user
