@@ -15,8 +15,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-<<<<<<< HEAD
 
 
-=======
->>>>>>> advanced-login

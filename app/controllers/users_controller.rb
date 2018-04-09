@@ -30,8 +30,8 @@ class UsersController < ApplicationController
     else
       render 'new'
       # 注册失败那就是已经存在用户，去到new那里登录
+    end
   end
-end
   
     def edit
       @user=User.find(params[:id])
@@ -48,6 +48,20 @@ end
         render 'edit'
       end
     end 
+
+    def following 
+      @title = "Following" 
+      @user = User.find(params[:id]) 
+      @users = @user.following.paginate(page: params[:page]) 
+      render 'show_follow' 
+    end 
+    
+    def followers 
+      @title = "Followers" 
+      @user = User.find(params[:id]) 
+      @users = @user.followers.paginate(page: params[:page]) 
+      render 'show_follow' 
+    end
     
     def destroy
       User.find(params[:id]).destroy
